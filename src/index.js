@@ -1,16 +1,13 @@
+import './index.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ApolloProvider } from 'react-apollo'
 import client from './graphql/client'
-import App from './App'
-import config from './config'
-import './index.css'
-
-console.log(config)
+import Routes from './Routes'
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App />
+    <Routes />
   </ApolloProvider>,
   document.getElementById('root')
 )

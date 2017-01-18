@@ -11,9 +11,11 @@
   "dependencies": {
     "apollo-client": "^0.7.2",
     "graphql-tag": "^1.2.2",
+    "jwt-decode": "^2.1.0",
     "react": "^15.4.2",
     "react-apollo": "^0.8.1",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "react-router": "^3.0.1"
   },
   "devDependencies": {
     "react-scripts": "0.8.5"

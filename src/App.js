@@ -1,18 +1,30 @@
-import React, { Component } from 'react'
-import logo from './logo.svg'
 import './App.css'
+import React, { Component, PropTypes as T } from 'react'
+import AuthService from './utils/AuthService'
+import Nav from './nav/Nav'
 
-class App extends Component {
+function requireLogin() {
+  if (!AuthService.loggedIn()) {
+    AuthService.login()
+  }
+}
+
+export default class App extends Component {
+  static propTypes = {
+    children: T.node,
+  }
+
+  componentDidMount() {
+    requireLogin()
+  }
+
   render() {
+    let children = AuthService.loggedIn() ? this.props.children : null
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to <em>Kino!</em></h2>
-        </div>
+        <Nav />
+        {children}
       </div>
     )
   }
 }
-
-export default App
