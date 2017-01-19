@@ -10,6 +10,12 @@
   height: 80px;
 }
 
+.Nav-logout {
+  color: #fff;
+  float: right;
+  text-decoration: none;
+}
+
 @keyframes Nav-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

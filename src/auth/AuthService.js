@@ -3,13 +3,13 @@ import { browserHistory } from 'react-router'
 import config from '../config'
 import { isTokenExpired } from './jwtHelpers'
 
-const redirectUrl = window.location.protocol + '//' + window.location.host
+const callbackUrl = `${window.location.protocol}//${window.location.host}/auth/callback`
 
 class AuthService {
   constructor(clientId, domain) {
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: redirectUrl,
+        redirectUrl: callbackUrl,
         responseType: 'token',
       },
     })
@@ -22,7 +22,6 @@ class AuthService {
     this.lock.on('authenticated', (authResult) => {
       this.setToken(authResult.idToken)
       browserHistory.replace('/')
-      this.hide()
     })
 
     this.lock.on('show', () => {
@@ -37,12 +36,6 @@ class AuthService {
   login() {
     if (!this.shown) {
       this.lock.show()
-    }
-  }
-
-  hide() {
-    if (this.shown) {
-      this.lock.hide()
     }
   }
 

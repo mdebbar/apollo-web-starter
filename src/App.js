@@ -1,6 +1,6 @@
 import './App.css'
 import React, { Component, PropTypes as T } from 'react'
-import AuthService from './utils/AuthService'
+import AuthService from './auth/AuthService'
 import Nav from './nav/Nav'
 
 function requireLogin() {
