@@ -5,12 +5,15 @@ let config
 // 2. Should production config be secret (not inside repo)?
 if (process.env.NODE_ENV === 'production') {
   config = {
+    // TODO: put the prod API host.
+    API_HOST: '',
     AUTH0_CLIENT_ID: '',
     AUTH0_DOMAIN: 'kino.auth0.com',
   }
 } else {
   // This part will automatically be removed in production builds.
   config = {
+    API_HOST: 'http://localhost:4000',
     AUTH0_CLIENT_ID: '8CsBqfjDelYpjnU66cOpK4IrTkHUvW3i',
     AUTH0_DOMAIN: 'kino.auth0.com',
   }

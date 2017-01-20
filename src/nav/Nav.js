@@ -10,7 +10,6 @@ export default class Nav extends Component {
       <div className="Nav">
         {AuthService.loggedIn() &&
           <Link to="/logout" className="Nav-logout">Logout</Link>
-          /* <button onClick={AuthService.logout}>Logout</button> */
         }
         <img src={logo} className="Nav-logo" alt="logo" />
         <h2>Welcome to <em>Kino!</em></h2>

@@ -11,6 +11,9 @@ class AuthService {
       auth: {
         redirectUrl: callbackUrl,
         responseType: 'token',
+        params: {
+          scope: 'openid email given_name family_name',
+        },
       },
     })
     this.login = this.login.bind(this)
@@ -20,6 +23,8 @@ class AuthService {
 
   _setupEventListeners() {
     this.lock.on('authenticated', (authResult) => {
+      // TODO: make sure `authResult.idTokenPayload.email` exists. Otherwise, ask the user
+      //       to remove the Kino App and login again and allow access to their email.
       this.setToken(authResult.idToken)
       browserHistory.replace('/')
     })
@@ -40,8 +45,7 @@ class AuthService {
   }
 
   loggedIn() {
-    const token = this.getToken()
-    return !!token && !isTokenExpired(token)
+    return !!this.getToken()
   }
 
   setToken(idToken) {
@@ -49,7 +53,11 @@ class AuthService {
   }
 
   getToken() {
-    return window.localStorage.getItem('id_token')
+    const token = window.localStorage.getItem('id_token')
+    if (token && !isTokenExpired(token)) {
+      return token
+    }
+    return null
   }
 
   logout() {

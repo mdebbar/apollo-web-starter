@@ -9,8 +9,9 @@
     "deploy": "TODO: BUILD && UPLOAD TO S3 && UPDATE WEB SERVER TO POINT TO NEW ASSETS"
   },
   "dependencies": {
-    "apollo-client": "^0.7.2",
-    "graphql-tag": "^1.2.2",
+    "apollo-client": "^0.7.3",
+    "auth0-lock": "^10.9.2",
+    "graphql-tag": "^1.2.3",
     "jwt-decode": "^2.1.0",
     "react": "^15.4.2",
     "react-apollo": "^0.8.1",

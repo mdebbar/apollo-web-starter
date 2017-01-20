@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Router, Route, IndexRoute, Redirect, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import App from './App'
 import Home from './home/Home'
 import Logout from './auth/Logout'
@@ -14,9 +14,7 @@ export default class MainRoutes extends Component {
         </Route>
 
         {/* Transition the user to this route if you want to log them out */}
-        <Route path="/logout" component={Logout}>
-          <Redirect to="/" />
-        </Route>
+        <Route path="/logout" component={Logout} />
 
         {/* This is the callback url from Auth0. Keep this route outside "/" because at
           * this point, this user is still not logged in
